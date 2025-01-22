@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const PriceTracker = () => {
+const App = () => {
   const selectedCryptos = [
     'BTCUSDT',
     'ETHUSDT',
@@ -88,4 +88,4 @@ const PriceTracker = () => {
   );
 };
 
-export default PriceTracker;
+export default App;
