@@ -39,7 +39,7 @@ const PriceTracker = () => {
     
     const interval = setInterval(() => {
       fetchCryptoData();
-    }, 1000);
+    }, 30000);
 
     return () => clearInterval(interval);
   }, []); 
