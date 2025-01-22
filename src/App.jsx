@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const PriceTracker = () => {
-  // Tanlangan valyutalar ro'yxati (staik ro'yxat)
   const selectedCryptos = [
     'BTCUSDT',
     'ETHUSDT',
@@ -16,17 +15,14 @@ const PriceTracker = () => {
     'TRXUSDT',
   ];
 
-  // Ma'lumotlar holati
   const [cryptoData, setCryptoData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // API'dan ma'lumot olish
   const fetchCryptoData = async () => {
     setLoading(true);
     try {
       const response = await axios.get('https://api.binance.com/api/v3/ticker/24hr');
-      // Tanlangan valyutalarni filtrlash
       const filteredData = response.data.filter(item =>
         selectedCryptos.includes(item.symbol)
       );
@@ -38,36 +34,32 @@ const PriceTracker = () => {
     }
   };
 
-  // Pollingni yaratish
   useEffect(() => {
-    // Ma'lumotlarni birinchi marta olish
     fetchCryptoData();
     
-    // 30 soniyada bir marta yangilash
     const interval = setInterval(() => {
       fetchCryptoData();
-    }, 30000); // 30 sekundda bir marta yangilash
+    }, 1000);
 
-    // Component unmount bo'lganda intervalni to'xtatish
     return () => clearInterval(interval);
-  }, []); // Boshlang'ich ma'lumotni olish va intervalni boshlash
-
-  // Hajm va Market Capni formatlash uchun funksiya (faqat B formatida)
+  }, []); 
+  
   const formatVolumeAndMarketCap = (value) => {
     const num = parseFloat(value);
     if (num >= 1e9) {
-      return `$${(num / 1e9).toFixed(2)}B`;  // Har doim billion (B) formatida ko'rsatish
+      return `$${(num / 1e9).toFixed(2)}B`;
     } else if (num >= 1e6) {
-      return `$${(num / 1e6).toFixed(2)}M`;  // Agar million (M) dan katta bo'lsa million sifatida ko'rsatish
+      return `$${(num / 1e6).toFixed(2)}M`;
     } else {
-      return `$${(num).toFixed(2)}`;  // Agar hajm million (M) yoki billion (B) dan kichik bo'lsa faqat son ko'rsatish
+      return `$${(num).toFixed(2)}`;  
     }
   };
 
-  // Market Capni hisoblash (har doim million sifatida ko'rsatish)
+  
+
   const calculateMarketCap = (price, volume) => {
-    const marketCap = parseFloat(price) * parseFloat(volume); // Narx va Hajmni ko'paytirish
-    return formatVolumeAndMarketCap(marketCap); // Formatta million sifatida ko'rsatish
+    const marketCap = parseFloat(price) * parseFloat(volume); 
+    return formatVolumeAndMarketCap(marketCap);
   };
 
   if (loading) return <div>Loading...</div>;

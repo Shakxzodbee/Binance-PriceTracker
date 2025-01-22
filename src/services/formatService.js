@@ -6,9 +6,9 @@ export const formatVolumeAndMarketCap = (value) => {
   const numValue = parseFloat(value);
 
   if (numValue >= 1e9) {
-    return `$${(numValue / 1e9).toFixed(2)}B`; // Milliard ko'rinishida
+    return `$${(numValue / 1e9).toFixed(2)}B`; 
   } else if (numValue >= 1e6) {
-    return `$${(numValue / 1e6).toFixed(2)}M`; // Million ko'rinishida
+    return `$${(numValue / 1e6).toFixed(2)}M`; 
   } else {
     return `$${numValue.toFixed(2)}`;
   }

@@ -1,16 +1,16 @@
 // src/components/PriceTracker.js
 
 import React, { useState, useEffect } from 'react';
-import { fetchCryptoData } from './services/cryptoService';  // Crypto ma'lumotlarini olish servisi
-import { formatVolumeAndMarketCap } from '  ./services/formatService';  // Volume va Market Capni formatlash
-import { formatPrice } from './services/priceFormatter';  // Narxlarni formatlash
+import { fetchCryptoData } from './services/cryptoService';  
+import { formatVolumeAndMarketCap } from '  ./services/formatService';  
+import { formatPrice } from './services/priceFormatter'; 
 
 const PriceTracker = () => {
   const selectedCryptos = [
     'BTCUSDT',
     'ETHUSDT',
     'XRPUSDT',
-    'USDT',       // Faqat USDT
+    'USDT',      
     'SOLUSDT',
     'BNBUSDT',
     'DOGEUSDT',
@@ -36,8 +36,8 @@ const PriceTracker = () => {
     };
 
     getData();
-    const interval = setInterval(getData, 30000); // 30 sekundda yangilash
-    return () => clearInterval(interval); // Component unmount bo'lganda intervalni to'xtatish
+    const interval = setInterval(getData, 1000); 
+    return () => clearInterval(interval); 
   }, []); 
 
   const handleClick = (cryptoSymbol) => {
