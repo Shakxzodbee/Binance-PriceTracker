@@ -52,13 +52,15 @@ const PriceTracker = () => {
     return () => clearInterval(interval);
   }, []); // Boshlang'ich ma'lumotni olish va intervalni boshlash
 
-  // Hajm va Market Capni formatlash uchun funksiya (faqat M formatida)
+  // Hajm va Market Capni formatlash uchun funksiya (faqat B formatida)
   const formatVolumeAndMarketCap = (value) => {
     const num = parseFloat(value);
-    if (num >= 1e6) {
-      return `$${(num / 1e6).toFixed(2)}M`;  // Har doim million (M) formatida ko'rsatish
+    if (num >= 1e9) {
+      return `$${(num / 1e9).toFixed(2)}B`;  // Har doim billion (B) formatida ko'rsatish
+    } else if (num >= 1e6) {
+      return `$${(num / 1e6).toFixed(2)}M`;  // Agar million (M) dan katta bo'lsa million sifatida ko'rsatish
     } else {
-      return `$${(num).toFixed(2)}M`;  // Agar kichikroq bo'lsa ham million sifatida ko'rsatish
+      return `$${(num).toFixed(2)}`;  // Agar hajm million (M) yoki billion (B) dan kichik bo'lsa faqat son ko'rsatish
     }
   };
 
