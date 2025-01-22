@@ -43,19 +43,22 @@ const PriceTracker = () => {
 
     return () => clearInterval(interval);
   }, []); 
-  
-  const formatVolumeAndMarketCap = (value) => {
-    const num = parseFloat(value);
-    if (num >= 1e9) {
-      return `$${(num / 1e9).toFixed(2)}B`;
-    } else if (num >= 1e6) {
-      return `$${(num / 1e6).toFixed(2)}M`;
-    } else {
-      return `$${(num).toFixed(2)}`;  
-    }
+
+  // Format value with commas and decimals
+  const formatCurrency = (value) => {
+    const number = parseFloat(value);
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(number);
   };
 
-  
+  const formatVolumeAndMarketCap = (value) => {
+    const num = parseFloat(value);
+    return `${(num / 1e9).toFixed(2)}B`;  // Always show in billions with "B"
+  };
 
   const calculateMarketCap = (price, volume) => {
     const marketCap = parseFloat(price) * parseFloat(volume); 
@@ -74,7 +77,7 @@ const PriceTracker = () => {
         {cryptoData.map((crypto) => (
           <div key={crypto.symbol} style={{ padding: '10px', margin: '10px', border: '1px solid #ddd', width: '250px' }}>
             <h3>{crypto.symbol}</h3>
-            <p><strong>Price:</strong> ${parseFloat(crypto.lastPrice).toFixed(2)}</p>
+            <p><strong>Price:</strong> {formatCurrency(crypto.lastPrice)}</p>
             <p><strong>Change (24h):</strong> {parseFloat(crypto.priceChangePercent).toFixed(2)}%</p>
             <p><strong>24h Volume:</strong> {formatVolumeAndMarketCap(crypto.volume)}</p>
             <p><strong>Market Cap:</strong> {calculateMarketCap(crypto.lastPrice, crypto.volume)}</p>
