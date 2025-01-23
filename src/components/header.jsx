@@ -10,13 +10,13 @@ const Header = () => {
         onClick={() => window.location.replace('/')}
         src="/logo.jpg"
         alt="logo"
-        className="h-16 cursor-pointer"
+        className="h-16 max-sm:max-w-24 cursor-pointer"
       />
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center max-sm:gap-2 gap-4">
         <button
           onClick={() => setModal(true)}
-          className="bg-gray-200 text-gray-800 py-2 px-6 rounded-full cursor-pointer font-medium shadow hover:bg-gray-300 transition"
+          className="bg-gray-200 text-gray-800 py-2 max-sm:px-3 px-6 rounded-full cursor-pointer font-medium shadow hover:bg-gray-300 transition"
         >
           Лицензия
         </button>
