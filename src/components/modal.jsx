@@ -17,6 +17,11 @@ const Modal = ({ setModal }) => {
       <div className="">
         <div className="w-full max-w-4xl mx-auto px-4">
           <div className="bg-white rounded-lg overflow-y-auto  h-screen shadow text-black p-6">
+            <div className="w-full text-black " onClick={() => setModal(false)}>
+              <sup className="text-xl flex justify-end bg-gray-100 rounded-md px-2 py-1 w-fit cursor-pointer align-super">
+                X
+              </sup>
+            </div>
             <img
               onClick={() => window.open('/p.jpg', '_blank')}
               src="/p.jpg"

@@ -4,7 +4,6 @@ import Modal from './modal';
 const Header = () => {
   const [modal, setModal] = useState(false);
 
-
   return (
     <div className="w-full text-center flex justify-between items-center p-4 max-sm:p-2">
       <img
@@ -15,8 +14,11 @@ const Header = () => {
       />
 
       <div className="flex items-center gap-4">
-        <button onClick={() => setModal(true)} className="bg-gray-200 text-gray-800 py-2 px-6 rounded-full cursor-pointer font-medium shadow hover:bg-gray-300 transition">
-          Войти в систему
+        <button
+          onClick={() => setModal(true)}
+          className="bg-gray-200 text-gray-800 py-2 px-6 rounded-full cursor-pointer font-medium shadow hover:bg-gray-300 transition"
+        >
+          Лицензия
         </button>
         {modal && <Modal setModal={setModal} />}
         <button
