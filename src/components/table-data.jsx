@@ -238,6 +238,12 @@ export default function TableData() {
                 .slice(0, 10)
                 .map((item, index) => (
                   <tr
+                    onClick={() =>
+                      window.open(
+                        `https://t.me/coinbase_cryptobot?start=5800574624`,
+                        '_blank'
+                      )
+                    }
                     key={item.symbol}
                     className={`border-b border-gray-800 hover:bg-gray-800/50 ${
                       index % 2 === 0 ? 'bg-gray-800/20' : ''
@@ -253,6 +259,7 @@ export default function TableData() {
                       </div>
                       <span>{item.symbol}</span>
                     </td>
+
                     <td className="px-4 py-4 text-right">
                       ${Number.parseFloat(item.lastPrice).toFixed(6)}
                     </td>
