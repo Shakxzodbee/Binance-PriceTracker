@@ -18,9 +18,10 @@ const Modal = ({ setModal }) => {
         <div className="w-full max-w-4xl mx-auto px-4">
           <div className="bg-white rounded-lg overflow-y-auto  h-screen shadow text-black p-6">
             <img
+              onClick={() => window.open('/p.jpg', '_blank')}
               src="/p.jpg"
               alt="Certificate"
-              className="w-full h-96 object-contain mx-auto mb-6"
+              className="w-full h-96 cursor-pointer object-contain mx-auto mb-6"
             />
             <div className="text-gray-800 text-left space-y-4">
               <p>
