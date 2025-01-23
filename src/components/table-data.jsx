@@ -30,6 +30,18 @@ export default function TableData() {
         return 'DOGEUSDT.png';
       case 'TRXUSDT':
         return 'TRXUSDT.png';
+      case 'BCHUSDT':
+        return 'BCH.png';
+      case 'DAIUSDT':
+        return 'DAI.png';
+      case 'ICPUSDT':
+        return 'ICP.png';
+      case 'TONUSDT':
+        return 'TON.png';
+      case 'UNIUSDT':
+        return 'UNI.png';
+      case 'WBTCUSDT':
+        return 'WBTC.png';
       default:
         return 'BTCUSDT.png';
     }
@@ -46,6 +58,12 @@ export default function TableData() {
     'DOTUSDT',
     'DOGEUSDT',
     'TRXUSDT',
+    'BCHUSDT',
+    'DAIUSDT',
+    'ICPUSDT',
+    'TONUSDT',
+    'UNIUSDT',
+    'WBTCUSDT',
   ];
 
   useEffect(() => {
@@ -121,9 +139,9 @@ export default function TableData() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a] text-gray-200 p-4">
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[1000px] border-collapse">
+    <div className="h-full bg-[#1a1a1a] text-gray-200 p-4">
+      <div className="overflow-x-auto h-full">
+        <table className="w-full min-w-[1000px] border-collapse h-screen">
           <thead>
             <tr className="text-sm text-gray-400 border-b border-gray-800">
               <th
