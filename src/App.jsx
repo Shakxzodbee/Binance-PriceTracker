@@ -72,7 +72,9 @@ const App = () => {
 
   return (
     <div>
-      <h2>Binance Price Tracker</h2>
+      <div className='w-full text-center flex justify-center '>
+        <img src="/logo.jpg" alt="logo" className='h-16' />
+      </div>
 
       {/* Narxlar ro'yxati */}
       {/* <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '20px' }}>
@@ -108,7 +110,7 @@ const App = () => {
 
       <TableData />
     </div>
-  );  
+  );
 };
 
 export default App;
