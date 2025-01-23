@@ -86,7 +86,7 @@ const App = () => {
                 '_blank'
               )
             }
-            className="px-4 max-sm:px-2 max-sm:text-sm pb-2 pt-1.5 font-medium cursor-pointer gap-2 hover:bg-blue-600 bg-[#0052FD] text-white rounded-full"
+            className="px-5 max-sm:px-2 max-sm:text-sm pb-2.5 pt-2 font-medium cursor-pointer gap-2 hover:bg-blue-600 bg-[#0052FD] text-white rounded-full"
           >
             <div className="flex items-center justify-end gap-2">
               <img src="/tg.png" className="w-6 h-6 rounded-full" alt="" />
