@@ -1,4 +1,6 @@
-body{
-  background-color: #181A20;
+@import 'tailwindcss';
+
+body {
+  background-color: #181a20;
   color: #fff;
 }
