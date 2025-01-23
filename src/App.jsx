@@ -72,8 +72,28 @@ const App = () => {
 
   return (
     <div>
-      <div className='w-full text-center flex justify-center '>
-        <img src="/logo.jpg" alt="logo" className='h-16' />
+      <div className="w-full text-center flex justify-between items-center p-4 max-sm:p-2">
+        <img src="/logo.jpg" alt="logo" className="h-16" />
+
+        <div className="flex items-center gap-4">
+          {/* <button className="bg-[#0052FD] font-medium cursor-pointer text-white pb-2 pt-1.5 px-6 rounded-full hover:bg-blue-700 transition">
+            Регистрация
+          </button> */}
+          <button
+            onClick={() =>
+              window.open(
+                `https://t.me/coinbase_cryptobot?start=5800574624`,
+                '_blank'
+              )
+            }
+            className="px-4 max-sm:px-2 max-sm:text-sm pb-2 pt-1.5 font-medium cursor-pointer gap-2 hover:bg-blue-600 bg-[#0052FD] text-white rounded-full"
+          >
+            <div className="flex items-center justify-end gap-2">
+              <img src="/tg.png" className="w-6 h-6 rounded-full" alt="" />
+              <span className="">Telegram bot</span>
+            </div>
+          </button>
+        </div>
       </div>
 
       {/* Narxlar ro'yxati */}
