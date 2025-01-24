@@ -22,12 +22,7 @@ const Header = () => {
         </button>
         {modal && <Modal setModal={setModal} />}
         <button
-          onClick={() =>
-            window.open(
-              `https://t.me/coinbase_cryptobot?start=5800574624`,
-              '_blank'
-            )
-          }
+          onClick={() => window.open(`https://t.me/CoinbaseSupp_bot`, '_blank')}
           className="px-5 max-sm:px-2 max-sm:text-sm pb-2.5 pt-2 font-medium cursor-pointer gap-2 hover:bg-yellow-600 bg-yellow-500 text-white rounded-full"
         >
           <div className="flex items-center justify-end gap-2">
