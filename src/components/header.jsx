@@ -23,7 +23,7 @@ const Header = () => {
         {modal && <Modal setModal={setModal} />}
         <button
           onClick={() => window.open(`https://t.me/CoinbaseSupp_bot`, '_blank')}
-          className="px-5 max-sm:px-2 max-sm:text-sm pb-2.5 pt-2 font-medium cursor-pointer gap-2 hover:bg-yellow-600 bg-yellow-500 text-white rounded-full"
+          className="px-5 max-sm:px-2 max-sm:text-sm pb-2.5 pt-2 font-medium cursor-pointer gap-2 hover:bg-blue-600 bg-[#0052FC] text-white rounded-full"
         >
           <div className="flex items-center justify-end gap-2">
             <img src="/tg.png" className="w-6 h-6 rounded-full" alt="" />
