@@ -28,8 +28,8 @@ export default function TableData() {
         return 'DOTUSDT.png';
       case 'DOGEUSDT':
         return 'DOGEUSDT.png';
-      case 'TRXUSDT':
-        return 'TRXUSDT.png';
+      case 'WBTCUSDT':
+        return 'WBTC.png';
       default:
         return 'BTCUSDT.png';
     }
@@ -45,7 +45,7 @@ export default function TableData() {
     'SOLUSDT',
     'DOTUSDT',
     'DOGEUSDT',
-    'TRXUSDT',
+    'WBTCUSDT',
   ];
 
   useEffect(() => {
@@ -121,9 +121,9 @@ export default function TableData() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a] text-gray-200 p-4">
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[1000px] border-collapse">
+    <div className="h-full bg-[#1a1a1a] text-gray-200 p-4">
+      <div className="overflow-x-auto h-full">
+        <table className="w-full min-w-[1000px] border-collapse h-screen">
           <thead>
             <tr className="text-sm text-gray-400 border-b border-gray-800">
               <th
@@ -236,102 +236,110 @@ export default function TableData() {
                     : -1;
                 })
                 .slice(0, 10)
-                .map((item, index) => (
-                  <tr
-                    key={item.symbol}
-                    className={`border-b border-gray-800 hover:bg-gray-800/50 ${
-                      index % 2 === 0 ? 'bg-gray-800/20' : ''
-                    }`}
-                  >
-                    <td className="px-4 py-4 flex items-center gap-2">
-                      <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
-                        <img
-                          src={photoCrypto(item.symbol)}
-                          className="rounded-full"
-                          alt=""
-                        />
-                      </div>
-                      <span>{item.symbol}</span>
-                    </td>
-                    <td className="px-4 py-4 text-right">
-                      ${Number.parseFloat(item.lastPrice).toFixed(6)}
-                    </td>
-                    <td
-                      className={`px-4 py-4 text-right ${
-                        Number.parseFloat(
-                          item.priceChanges[selectedInterval]
-                        ) >= 0
-                          ? 'text-green-500'
-                          : 'text-red-500'
+                .map((item, index) => {
+                  const formattedPrice = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  }).format(item.lastPrice);
+
+                  return (
+                    <tr
+                      key={item.symbol}
+                      className={`border-b border-gray-800 hover:bg-gray-800/50 ${
+                        index % 2 === 0 ? 'bg-gray-800/20' : ''
                       }`}
                     >
-                      <div className="inline-flex flex-col items-end">
-                        <span>
-                          {Number.parseFloat(
+                      <td className="px-4 py-4 flex items-center gap-2">
+                        <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
+                          <img
+                            src={photoCrypto(item.symbol)}
+                            className="rounded-full"
+                            alt=""
+                          />
+                        </div>
+                        <span>{item.symbol}</span>
+                      </td>
+
+                      <td className="px-4 py-4 text-right">{formattedPrice}</td>
+                      <td
+                        className={`px-4 py-4 text-right ${
+                          Number.parseFloat(
                             item.priceChanges[selectedInterval]
                           ) >= 0
-                            ? '+'
-                            : ''}
-                          {Number.parseFloat(
-                            item.priceChanges[selectedInterval]
-                          ).toFixed(2)}
-                          %
-                        </span>
-                        {selectedInterval !== '24h' && (
-                          <span className="text-sm opacity-75">
-                            24h:{' '}
+                            ? 'text-green-500'
+                            : 'text-red-500'
+                        }`}
+                      >
+                        <div className="inline-flex flex-col items-end">
+                          <span>
                             {Number.parseFloat(
-                              item.priceChanges['24h']
+                              item.priceChanges[selectedInterval]
+                            ) >= 0
+                              ? '+'
+                              : ''}
+                            {Number.parseFloat(
+                              item.priceChanges[selectedInterval]
                             ).toFixed(2)}
                             %
                           </span>
-                        )}
-                      </div>
-                    </td>
-                    <td className="px-4 py-4 text-right">
-                      ${formatNumber(item.volume)}
-                    </td>
-                    <td className="px-4 py-4 text-right">
-                      ${formatNumber(item.quoteVolume)}
-                    </td>
-                    <td className="px-4 py-4 text-right space-x-2">
-                      <button className="p-2 hover:bg-gray-700 rounded">
-                        <svg
-                          className="bn-svg h-5 w-5"
-                          alt="Detail"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M18 3H3v18h9.222A5.5 5.5 0 0118 11.97V3zM5.02 9.286L8.556 5.75l3.182 3.182 3.181-3.182 1.061 1.06-4.242 4.243-3.182-3.182-2.475 2.475-1.061-1.06zm12.544 9.278a2 2 0 10-2.828-2.828 2 2 0 002.828 2.828zm1.414-4.242a4.002 4.002 0 01.744 4.63l2.276 2.278-1.767 1.767-2.277-2.276a4.002 4.002 0 01-4.633-6.4 4 4 0 015.657 0z"
-                            fill="currentColor"
-                          ></path>
-                        </svg>
-                      </button>
-                      <button className="p-2 hover:bg-gray-700 rounded">
-                        <svg
-                          className="bn-svg h-5 w-5"
-                          alt="Trade"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M16 3h3v4h3v9.999h-3v4h-3v-4h-3V7h3V3zm3 7h-3v3.999h3V10z"
-                            fill="currentColor"
-                          ></path>
-                          <path
-                            d="M8 11h3v6H8v4H5v-4H2v-6h3V7h3v4z"
-                            fill="currentColor"
-                          ></path>
-                        </svg>
-                      </button>
-                    </td>
-                  </tr>
-                ))
+                          {selectedInterval !== '24h' && (
+                            <span className="text-sm opacity-75">
+                              24h:{' '}
+                              {Number.parseFloat(
+                                item.priceChanges['24h']
+                              ).toFixed(2)}
+                              %
+                            </span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-4 py-4 text-right">
+                        ${formatNumber(item.volume)}
+                      </td>
+                      <td className="px-4 py-4 text-right">
+                        ${formatNumber(item.quoteVolume)}
+                      </td>
+                      <td className="px-4 py-4 text-right space-x-2">
+                        <button className="p-2 hover:bg-gray-700 rounded">
+                          <svg
+                            className="bn-svg h-5 w-5"
+                            alt="Detail"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              clipRule="evenodd"
+                              d="M18 3H3v18h9.222A5.5 5.5 0 0118 11.97V3zM5.02 9.286L8.556 5.75l3.182 3.182 3.181-3.182 1.061 1.06-4.242 4.243-3.182-3.182-2.475 2.475-1.061-1.06zm12.544 9.278a2 2 0 10-2.828-2.828 2 2 0 002.828 2.828zm1.414-4.242a4.002 4.002 0 01.744 4.63l2.276 2.278-1.767 1.767-2.277-2.276a4.002 4.002 0 01-4.633-6.4 4 4 0 015.657 0z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </button>
+                        <button className="p-2 hover:bg-gray-700 rounded">
+                          <svg
+                            className="bn-svg h-5 w-5"
+                            alt="Trade"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              clipRule="evenodd"
+                              d="M16 3h3v4h3v9.999h-3v4h-3v-4h-3V7h3V3zm3 7h-3v3.999h3V10z"
+                              fill="currentColor"
+                            ></path>
+                            <path
+                              d="M8 11h3v6H8v4H5v-4H2v-6h3V7h3v4z"
+                              fill="currentColor"
+                            ></path>
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })
             )}
           </tbody>
         </table>

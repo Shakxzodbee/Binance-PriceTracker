@@ -3,7 +3,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,3 +21,4 @@ select {
   font-size: 16px;
   margin-top: 20px;
 }
+
